@@ -17,9 +17,9 @@ servers for potential security issues, including:
 
 #### Clone the repository
 ```bash
-git clone https://github.com/rackerlabs/TLSManager.git
+git clone https://github.com/ushyd201/TLSManager.git
 OR
-git clone git@github.com:rackerlabs/TLSManager.git
+git clone git@github.com:ushyd201/TLSManager.git
 ```
 
 #### Set up virtualenv (OPTIONAL)

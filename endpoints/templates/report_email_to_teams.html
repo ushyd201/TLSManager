@@ -1,0 +1,97 @@
+<div style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">
+    {% ifequal about_to_expire_endpoints|length 0 %}
+    {% else %}
+    <div>
+          <h2>Certs About to Expire</h2>
+          <div>
+            <table style="border:1px solid #0000CD;border-collapse:collapse;">
+              <thead>
+                <tr>
+                  <th style="background-color:#87CEEB; border-width:1px; border:1px solid #0000CD;">URL</th>
+                  <th style="background-color:#87CEEB; border-width:1px; border:1px solid #0000CD;">Days until Expiration</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for url, days in about_to_expire_endpoints.items %}
+                <tr>
+                    <td style="border:1px solid #0000CD;">{{ url }}</td>
+                    {% if days < 30 %}
+                    <td style="background-color: #FFBE81; border:1px solid #0000CD; text-align:center;">{{ days }}</td>
+                    {% else %}
+                        {% if days < 60 %}
+                        <td style="background-color: #F7BE81; border:1px solid #0000CD; text-align:center;">{{ days }}</td>
+                        {% else %}
+                        <td style="border:1px solid #0000CD; text-align:center;">{{ days }}</td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+    </div>
+    <br/>
+    <br/>
+    {% endifequal %}
+
+    <div>
+          <h2>URLs with Failing SSLLabs TLS Scores</h2>
+          <div>
+            <table style="border:1px solid #0000CD;border-collapse:collapse;">
+              <thead>
+                <tr>
+                  <th style="background-color: #87CEEB;border-width: 1px; border:1px solid #0000CD;">&nbsp; URL Tested &nbsp;</th>
+                  <th style="background-color: #87CEEB;border-width: 1px; border:1px solid #0000CD;">&nbsp; Product &nbsp;</th>
+                  <th style="background-color: #87CEEB;border-width: 1px; border:1px solid #0000CD;">&nbsp; Date Scanned &nbsp;</th>
+                  <th style="background-color: #87CEEB;border-width: 1px; border:1px solid #0000CD;">&nbsp; Score &nbsp;</th>
+                  <!-- th style="background-color: #87CEEB;border-width: 1px; border:1px solid #0000CD;">Previous Score</th -->
+                </tr>
+              </thead>
+              <tbody>
+                {% for endpoint_tr in endpoint_tr_tuples %}
+                <tr>
+                    <td style="border:1px solid #0000CD;">&nbsp; {{endpoint_tr.0.url}} &nbsp;</td>
+                    <td style="border:1px solid #0000CD;">&nbsp; {{endpoint_tr.0.product.name}} &nbsp;</td>
+                    <td style="border:1px solid #0000CD;">&nbsp; {{endpoint_tr.1.time}} &nbsp;</td>
+                    {% if endpoint_tr.1.score > endpoint_tr.2.score %} <!-- score was downgraded. highlight background -->
+                        {% ifequal endpoint_tr.1.score 'C' %}
+                            <td style="background-color: #F7BE81; border:1px solid #0000CD;" align="center"><font color="#DA70D6">&nbsp; {{endpoint_tr.1.score}} &nbsp;</font></td>
+                        {% endifequal %}
+                        {% ifequal endpoint_tr.1.score 'D' %}
+                            <td style="background-color: #F7BE81; border:1px solid #0000CD;" align="center"><font color="#FFA500">&nbsp; {{endpoint_tr.1.score}} &nbsp;</font></td>
+                        {% endifequal %}
+                        {% ifequal endpoint_tr.1.score 'F' %}
+                            <td style="background-color: #F7BE81; border:1px solid #0000CD;" align="center"><font color="red">&nbsp; {{endpoint_tr.1.score}} &nbsp;</font></td>
+                        {% endifequal %}
+                    {% else %} <!-- score was upgraded or remained the same -->
+                        {% ifequal endpoint_tr.1.score 'C' %}
+                            <td style="border:1px solid #0000CD;" align="center"><font color="#DA70D6">&nbsp; {{endpoint_tr.1.score}} &nbsp;</font></td>
+                        {% endifequal %}
+                        {% ifequal endpoint_tr.1.score 'D' %}
+                            <td style="border:1px solid #0000CD;" align="center"><font color="#FFA500">&nbsp; {{endpoint_tr.1.score}} &nbsp;</font></td>
+                        {% endifequal %}
+                        {% ifequal endpoint_tr.1.score 'F' %}
+                            <td style="border:1px solid #0000CD;" align="center"><font color="red">&nbsp; {{endpoint_tr.1.score}} &nbsp;</font></td>
+                        {% endifequal %}
+                    {% endif %}
+
+                    <!-- {p ifequal endpoint_tr.2.score 'C' p}
+                        <td style="border:1px solid #0000CD;" align="center"><font color="#DA70D6">{{endpoint_tr.2.score}}</font></td>
+                    {p endifequal p}
+                    {p ifequal endpoint_tr.2.score 'D' p}
+                        <td style="border:1px solid #0000CD;" align="center"><font color="#FFA500">{{endpoint_tr.2.score}}</font></td>
+                    {p endifequal p}
+                    {p ifequal endpoint_tr.2.score 'F' p}
+                        <td style="border:1px solid #0000CD;" align="center"><font color="red">{{endpoint_tr.2.score}}</font></td>
+                    {p endifequal p}
+                    {p if not endpoint_tr.2.score p}
+                        <td style="border:1px solid #0000CD;" align="center"><font color="red">&nbsp;</font></td>
+                    {p endif p} -->
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+    </div>
+
+</div>

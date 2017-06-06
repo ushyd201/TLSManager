@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+          <h2 class="sub-header">TLS Test Results</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>URL Tested</th>
+                  <th>Date Scanned</th>
+                  <th>Score</th>
+                  <th>Flaws</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>https://www.rackspace.com</td>
+                  <td>Apr 10, 2015 14:35</td>
+                  <td>A</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://mycloud.rackspace.com</td>
+                  <td>Mar 03, 2014 10:33</td>
+                  <td>A-</td>
+                  <td>RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://my.rackspace.com</td>
+                  <td>Feb 01, 2014 11:13</td>
+                  <td>F</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://customer-repose-n02.test.dfw1.us.ci.rackspace.net</td>
+                  <td>Jan 20, 2013 04:45</td>
+                  <td>B</td>
+                  <td> PFS, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://vsa-nat01.staging.ord1.uk.ci.rackspace.net</td>
+                  <td>Sep 01, 2014 07:23</td>
+                  <td>C</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://f5-1a.prod.hkg1.us.ci.rackspace.net</td>
+                  <td>Jul 01, 2014 05:12</td>
+                  <td>F</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://atom-n06.prod.lon3.uk.ci.rackspace.net</td>
+                  <td>Feb 11, 2014 22:28</td>
+                  <td>A</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://repose-cloudfeeds-n01.prod.lon3.uk.ci.rackspace.net</td>
+                  <td>Jan 01, 2014 13:56</td>
+                  <td>C</td>
+                  <td>RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://cloudfeeds.prod.iad3.us.ci.rackspace.net</td>
+                  <td>Mar 01, 2014 23:34</td>
+                  <td>A+</td>
+                  <td>RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://puppet-n01.dev.dfw1.ci.rackspace.net</td>
+                  <td>Jan 21, 2014 08:45</td>
+                  <td>A</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://awx-n01.test.dfw.us.ci.rackspace.net</td>
+                  <td>Dec 31, 2014 23:11</td>
+                  <td>B</td>
+                  <td>Poodle</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://elastic-n02.prod.lon3.uk.ci.rackspace.net</td>
+                  <td>Jan 01, 2014 19:34</td>
+                  <td>C</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://smtp.n01.dev.ord1.us.ci.rackspace.net</td>
+                  <td>Aug 01, 2014 08:03</td>
+                  <td>D</td>
+                  <td>Poodle, PFS</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://repo-n01.staging.ord1.uk.ci.rackspace.net</td>
+                  <td>Jul 01, 2014 22:45</td>
+                  <td>F</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://customer-n03.test.ord1.us.ci.rackspace.net</td>
+                  <td>Jan 01, 2014 13:54</td>
+                  <td>A-</td>
+                  <td>Poodle, PFS</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+                <tr>
+                  <td>https://atom-tomcat.staging.ord1.us.ci.rackspace.net</td>
+                  <td>May 01, 2014 14:35</td>
+                  <td>B</td>
+                  <td>Poodle, RC4</td>
+                  <td><a href="testDetails">Details</></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+{% endblock %}
